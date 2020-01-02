@@ -1,0 +1,30 @@
+# Cobbler generated configuration file for dnsmasq
+# $date 
+#
+
+port=0
+log-dhcp
+dhcp-match=ipxe,175
+dhcp-option=175,8:1:1
+dhcp-boot=net:ipxe,http://$next_server/boot/ipxeboot/${net0/mac}
+dhcp-boot=tag:!Iipxe,ipxe.0  
+enable-tftp  
+tftp-root=/tftpboot  
+dhcp-range=0.0.0.0,proxy,0.0.0.0  
+pxe-service=net:#ipxe,x86PC,"My Cool Netboot Processes",ipxe-native  
+
+# resolve.conf .. ?
+#no-poll
+#enable-dbus
+#
+#read-ethers
+#addn-hosts = /var/lib/cobbler/cobbler_hosts
+#
+# dhcp-range=192.168.1.5,192.168.1.200
+# dhcp-option=66,$next_server
+# dhcp-lease-max=1000
+# dhcp-authoritative
+# dhcp-boot=pxelinux.0
+# dhcp-boot=net:normalarch,pxelinux.0
+# 
+# $insert_cobbler_system_definitions

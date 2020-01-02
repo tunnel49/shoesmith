@@ -1,0 +1,42 @@
+version: '3'
+services:
+  cobbler:
+    build: .
+    network_mode: host #"service:cobbler"
+    image: cobbler:latest
+    ports:
+    - 25151
+    volumes:
+    - cobbler_vol:/srv/cobbler
+    environment:
+    - HOST_IP=${HOST_IP}
+  http_proxy:
+    command: /usr/sbin/httpd -DFOREGROUND
+    build: .
+    network_mode: host #"service:cobbler"
+    ports:
+    - 80:80
+    - 443
+    volumes:
+    volumes:
+    - cobbler_vol:/srv/cobbler
+    depends_on:
+    - cobbler
+    environment:
+    - HOST_IP=${HOST_IP}
+  dnsmasq:
+    command: /usr/sbin/dnsmasq --no-daemon
+    build: .
+    network_mode: host #"service:cobbler"
+    ports:
+    - 53/udp
+    volumes:
+    volumes:
+    - cobbler_vol:/srv/cobbler
+    depends_on:
+    - cobbler
+    environment:
+    - HOST_IP=${HOST_IP}
+
+volumes:
+  cobbler_vol:

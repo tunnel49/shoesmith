@@ -1,0 +1,13 @@
+# ******************************************************************
+# Cobbler managed genders file.
+# generated from cobbler genders template (Tue Dec 31 01:20:59 2019)
+# Do NOT make changes to /etc/genders. Instead, make your changes
+# in /etc/cobbler/genders.template, as /etc/genders will be
+# overwritten.
+# Then run: cobbler sync
+# to apply your changes.
+# ******************************************************************
+
+
+
+
