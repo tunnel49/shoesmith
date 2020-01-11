@@ -1,5 +1,4 @@
 FROM fedora
-#FROM registry.access.redhat.com/ubi8/ubi-init
 
 RUN yum -y install cobbler syslinux curl dnsmasq pip && \
     yum -y install iproute && \
@@ -10,7 +9,6 @@ RUN pip install envtpl
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 COPY settings.j2 /etc/cobbler/settings.j2
-#COPY httpd_cobbler.conf /etc/httpd/conf.d/cobbler.conf
 COPY modules.conf /etc/cobbler/modules.conf
 COPY dnsmasq.template /etc/cobbler/dnsmasq.template
 COPY genders /etc/genders
