@@ -2,7 +2,7 @@
 set -e
 
 cfg="/srv/shoesmith/dnsmasq.conf"
-cmd="/usr/sbin/dnsmasq --no-daemon -C \"$cfg\""
+cmd="/usr/sbin/dnsmasq --no-daemon -C $cfg"
 
 ltime=0
 pid=""
