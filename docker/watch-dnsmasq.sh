@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 set -e
 
 cfg="/srv/shoesmith/dnsmasq.conf"
