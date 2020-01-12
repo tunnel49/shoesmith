@@ -1,19 +1,21 @@
 #!/bin/sh
-cfg="/srv/shoesmith/dnsmasq.conf"
-cmd=/usr/sbin/dnsmasq --no-daemon -C \"$cfg\"
+set -e
 
-ltime=""
+cfg="/srv/shoesmith/dnsmasq.conf"
+cmd="/usr/sbin/dnsmasq --no-daemon -C \"$cfg\""
+
+ltime=0
 pid=""
 
 set -e
 trap 'kill -TERM $pid' TERM INT
 
 while 
-mtime=stat -c %Y -- $cfg
+mtime=$(stat -c %Y -- $cfg)
 
 if [ "$ltime" -ne "$mtime" ]
 then
-ltime=$mtime
+ltime="$mtime"
 [ -z $pid ] || kill -TERM $pid
 $cmd &
 pid=$!
