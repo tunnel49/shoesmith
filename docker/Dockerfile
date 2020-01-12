@@ -7,6 +7,7 @@ RUN yum -y install cobbler syslinux curl dnsmasq pip && \
 RUN pip install envtpl
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY watch-dnsmasq.sh /watch-dnsmasq.sh
 
 COPY settings.j2 /etc/cobbler/settings.j2
 COPY modules.conf /etc/cobbler/modules.conf
