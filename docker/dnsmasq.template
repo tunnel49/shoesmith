@@ -9,7 +9,7 @@ dhcp-option=175,8:1:1
 dhcp-boot=net:ipxe,http://$next_server/boot/ipxeboot/${net0/mac}
 dhcp-boot=tag:!Iipxe,ipxe.0  
 enable-tftp  
-tftp-root=/tftpboot  
+tftp-root=/srv/shoesmith/tftpboot
 dhcp-range=0.0.0.0,proxy,0.0.0.0  
 pxe-service=net:#ipxe,x86PC,"My Cool Netboot Processes",ipxe-native  
 
