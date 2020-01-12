@@ -11,4 +11,4 @@ $podman pod create -n shoesmith -p 80:80,443:443,67:67/udp
 $podman volume create shoesmith
 $podrun --name cobbler $container 
 $podrun --name cobbler-proxy $container /usr/sbin/httpd -DFOREGROUND
-$podrun --name cobbler-dhcp $container /usr/sbin/dnsmasq --no-daemon
+$podrun --name cobbler-dhcp $container /watch-dnsmasq.sh
