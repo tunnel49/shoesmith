@@ -9,10 +9,12 @@ fi
 container="quay.io/pontuslundgren/shoesmith:$tag"
 podman="podman"
 #podman="podman --remote-host poddler.local --username root"
-podrun="$podman run -d --rm --pod shoesmith -v shoesmith:/srv/shoesmith:z"
+podrun="$podman run -d --rm --pod shoesmith -e HOST_IP=$(hostname -i) -v shoesmith:/srv/shoesmith:z"
+
+brctl hairpin cni-podman0 veth449b401c on
 
 $podman pull $container
-$podman pod create -n shoesmith -p 80:80,443:443,67:67/udp
+$podman pod create -n shoesmith -p 25151:25151,80:80,443:443,67:67/udp
 $podman volume create shoesmith
 $podrun --name cobbler $container 
 $podrun --name cobbler-proxy $container /usr/sbin/httpd -DFOREGROUND
