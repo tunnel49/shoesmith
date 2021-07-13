@@ -6,7 +6,7 @@ then tag=latest
 else tag="$1"
 fi
 
-container="quay.io/pontuslundgren/shoesmith:$tag"
+container="quay.io/tunnel49/shoesmith:$tag"
 podman="podman"
 #podman="podman --remote-host poddler.local --username root"
 podrun="$podman run -d --rm --pod shoesmith -e HOST_IP=$(hostname -i) -v shoesmith:/srv/shoesmith:z"
