@@ -1,4 +1,4 @@
-FROM fedora
+FROM registry.fedoraproject.org/fedora
 
 RUN yum -y install cobbler syslinux curl dnsmasq pip && \
     yum -y install iproute && \
