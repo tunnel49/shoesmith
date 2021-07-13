@@ -14,7 +14,7 @@ COPY modules.conf /etc/cobbler/modules.conf
 COPY dnsmasq.template /etc/cobbler/dnsmasq.template
 COPY genders /etc/genders
 
-RUN sed -i 's/which_dhcp_module == "manage_/which_dhcp_module == "managers./g'   /usr/lib/python3.7/site-packages/cobbler/modules/sync_post_restart_services.py
+#RUN sed -i 's/which_dhcp_module == "manage_/which_dhcp_module == "managers./g'   /usr/lib/python3.7/site-packages/cobbler/modules/sync_post_restart_services.py
 
 ENV HOST_IP=127.0.0.1
 
