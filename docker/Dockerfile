@@ -15,11 +15,12 @@ COPY dnsmasq.template /etc/cobbler/dnsmasq.template
 COPY genders /etc/genders
 
 #RUN sed -i 's/which_dhcp_module == "manage_/which_dhcp_module == "managers./g'   /usr/lib/python3.7/site-packages/cobbler/modules/sync_post_restart_services.py
+RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 
 ENV HOST_IP=127.0.0.1
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-EXPOSE 67/UDP 80/tcp 443/tcp 25151/tcp
+EXPOSE 67/UDP 8080/tcp 4443/tcp 25151/tcp
 
 CMD ["/usr/bin/cobblerd", "-F", "-l", "INFO", "-f", "/dev/stdout"]
